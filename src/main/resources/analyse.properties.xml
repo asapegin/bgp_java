@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+
+	<!-- Analysis-independent options -->
+
+	<!-- 1. check for all announcements if the AS sent the update is the first 
+		AS in AS Path. False by default. -->
+	<entry key="fix_peer_as">false</entry>
+
+	<!-- 2. if false, AS sent the update will be fixed to be the same with first 
+		AS in AS Path if true, files where AS sent the update is not equal to the 
+		first AS in AS Path will be listed only. True by default. -->
+	<entry key="simulate_fix_peer_as">true</entry>
+
+	<!-- 3. Generate files with ases names from files with BGP update dumps. 
+		False by default. -->
+	<entry key="generate_ases">false</entry>
+
+	<!-- 4. Where to write newly generated files with ases names. Mandatory. -->
+	<entry key="generate_ases_folder">/media/truecrypt3/episode_4_origins/01.06.2009/generated_ases</entry>
+
+	<!-- 5. If true, the RIBs files will be used. There should be a corresponding 
+		RIB listed in input_names file for every file (monitoring router) with BGP 
+		updates dump. This will allow to restore AS Path for prefix withdrawals from 
+		BGP update dump. Thus, during analysis of updates from visible/monitored 
+		ASs (the only 2 analysis methods currently implemented) only updates from 
+		specified (visible or monitored) AS names and with AS Path including only 
+		specified AS names will be analysed. False by default. -->
+	<entry key="with_ribs">true</entry>
+
+	<!-- 6. If true, after reading updates from files, the sync procedure will 
+		be run. The procedure deletes spikes with time, when other pairs (monitored 
+		AS, monitoring router) have no spikes, but only if the time is less than 
+		time of first spike of any other pair or if the time is bigger than time 
+		of last spike of any other pair. NOTE: Even if it false, during reading updates 
+		from files, all updates with timestamp less then update timestamp in any 
+		other file will be ignored. False by default. -->
+	<entry key="sync_time">true</entry>
+
+	<!-- 7. visible or monitored. If visible is set, only updates from fully 
+		visible ASs (monitored ASs with all neighbours (according to the Internet 
+		map file/files) also monitored). 'visible' is default, but monitored is now 
+		recommended due to the fact that there are only very few stand-alone visible 
+		ASs, which is not so interesting to analyse. -->
+	<entry key="AS_type_to_analyse">monitored</entry>
+
+	<!-- 8. Map files. At least one of 'map' and 'map_t1' should be set. Otherwise, 
+		program will not work. -->
+
+	<!-- 8.1. actual (with the same data as files with BGP updates dump) map 
+		file from Internet Topology Collection. Null by default. If set, will be 
+		merged with other map files. -->
+	<entry key="map">/media/truecrypt3/episode_6/map.20120715</entry>
+
+	<!-- 8.2. actual (with the same data as files with BGP updates dump) map 
+		file from CAIDA. Null by default. If set, will be merged with other map files. -->
+	<entry key="map_t1">/media/truecrypt3/episode_6/cycle-aslinks.l7.t1.c002073.20120716.txt</entry>
+
+	<!-- 8.3. second (team2) actual (with the same data as files with BGP updates 
+		dump) map file from CAIDA. Null by default. If set, will be merged with other 
+		map files. -->
+	<entry key="map_t2">/media/truecrypt3/episode_6/cycle-aslinks.l7.t2.c002071.20120715.txt</entry>
+
+	<!-- 8.4. third (team3) actual (with the same data as files with BGP updates 
+		dump) map file from CAIDA. Null by default. If set, will be merged with other 
+		map files. -->
+	<entry key="map_t3">/media/truecrypt3/episode_6/cycle-aslinks.l7.t3.c002072.20120716.txt</entry>
+
+	<!-- 9. File containing names of files: 1) names of files with BGP updates 
+		dump 2) IF 'with_ribs'==true THEN names of files containing corresponding 
+		(with (1) and (3)) RIBs. 3) IF 'generate_ases'==false THEN names of files 
+		with monitored ASs extracted from BGP updates dumps -->
+	<entry key="input_names">/media/truecrypt3/episode_4_origins/01.06.2009/input_names.txt</entry>
+
+
+	<!-- 10. Type of the analysis. Could be 'graph' or 'correlated' or 'duplication'. 
+		MANDATORY. -->
+	<entry key="Analysis_type">correlated</entry>
+
+
+
+
+
+	<!-- Common options for 'graph' and 'correlated' analysis types -->
+
+	<!-- GC.1. time interval, in seconds. This program will analyse updates/spikes 
+		in the 'time-buffer' seconds time interval BEFORE and AFTER the given update/spike. 
+		120 by default. -->
+	<entry key="time-buffer">120</entry>
+
+	<!-- GC.2. Percentage of prefixes in the one spike, which are equal to prefixes 
+		of another spike, to classify both spikes as duplicated -->
+	<entry key="duplication-percentage">0.99</entry>
+
+
+
+	<!-- Options for 'correlated' analysis type: -->
+
+	<!-- C.1. Number of threads -->
+	<entry key="threads">1</entry>
+
+	<!-- C.2. Intervals for analysis. Example. start=1, end=203. The following 
+		spikes will be analysed: (1) with size 0..99, (2) with size 100..199, ..., 
+		(202) with size 2100..2199 -->
+	<entry key="start_interval">1</entry>
+	<entry key="end_interval">203</entry>
+
+	<!-- C.3. Filenames for results -->
+	<entry key="basic_classification_results_filename">/media/truecrypt3/episode_4_origins/01.06.2009/basic_classification/classification_120_0.99_0.1</entry>
+	<entry key="classification_results_filename">/media/truecrypt3/episode_4_origins/01.06.2009/classification/classification_120_0.99</entry>
+	<entry key="time_quartiles_filename">/media/truecrypt3/episode_4_origins/01.06.2009/classification/classification_120_0.99_time_quartiles_all_hops</entry>
+	<entry key="origins_quartiles_filename">/media/truecrypt3/episode_4_origins/01.06.2009/classification/classification_120_0.99_origins_quartiles_all_hops</entry>
+	
+	<!-- C.4. Correlation type. Could be basic or advanced. If basic, the threshold should be specified. -->
+	<entry key="correlation_type">basic</entry>
+	<entry key="basic_threshold">0.1</entry>
+
+	<!-- Options for 'duplication' analysis type: -->
+
+	<!-- D.1. filename -->
+	<entry key="duplication_results_filename">results_all_intervals/duplicated_spikes_stats_all_collectors</entry>
+
+	<!-- D.2. time intervals, in seconds. This program will analyse updates/spikes 
+		in the 'time-buffer' seconds time interval BEFORE and AFTER the given update/spike. 
+		120 by default. -->
+	<entry key="time-buffers">5,15,30</entry>
+
+	<!-- D.3. Percentages of prefixes in the one spike, which are equal to prefixes 
+		of another spike, to classify both spikes as duplicated -->
+	<entry key="duplication-percentages">0.1,0.4,0.7,0.99</entry>
+
+
+	<!-- Options for 'graph' analysis type: -->
+
+	<!-- G.1. If true, then only updates from ASs from the biggest connected 
+		component of visible/monitored ASs graph will be used (and NOT updates from 
+		ALL visible/monitored ASs). True by default. -->
+	<entry key="analyse_biggest_connected_subcomponent_only">true</entry>
+
+	<!-- G.2. After all updates are loaded, only spikes with sizes (number of 
+		updates per second) within these intervals will be analysed -->
+	<entry key="spike_size_intervals">250..300,950..1050,1950..2050</entry>
+
+	<!-- G.3. After spikes from size interval will be selected, only several 
+		(randomly selected) of them will be analysed. If 0, the program will try 
+		to analyse specific spike identified below -->
+	<entry key="number_of_random_spikes_to_analyse_for_each_size_interval">0</entry>
+
+	<!-- G.3.1. Time of interesting spike -->
+	<entry key="spike_time">1342361371</entry>
+	<!-- G.3.2. AS of interesting spike -->
+	<entry key="spike_as">3549</entry>
+	<!-- G.3.3. Monitoring router identified by filename -->
+	<entry key="spike_monitor">route-views2.updates_m</entry>
+
+	<!-- G.4. Filename prefix to write graph with all visible/monitored ASs 
+		found. Both graph with all ASs, and the biggest connected component of this 
+		graph will be created. 'dotfile' by default. -->
+	<entry key="dot_filename">/media/truecrypt3/episode_6/graph</entry>
+
+	<!-- G.5. The folder where the charts for spike, selected for the analysis, 
+		will be created. 'all_selected_visible_updates' by default. -->
+	<entry key="all_selected_updates_chart_folder">/media/truecrypt3/episode_6/all_selected_visible_updates</entry>
+
+	<!-- G.6. The folder, where charts for group of spikes duplicated with selected 
+		spike will be plotted. 'duplicated_selected_visible_updates' by default. -->
+	<entry key="group_charts_folder">/media/truecrypt3/episode_6/duplicated_selected_visible_updates</entry>
+
+	<!-- G.7. The folder, where graph showing the spread of routing events caused 
+		selected spikes will be written. 'group_graphs' by default. -->
+	<entry key="group_graphs_folder">/media/truecrypt3/episode_6/group_graphs</entry>
+
+	<!-- G.8. Name of file with list of colours used by gnuplot. Needed for 
+		creation of charts. Mandatory. -->
+	<entry key="gnuplot_colours">/media/truecrypt3/episode_6/gnuplot_colours.txt</entry>
+
+</properties>

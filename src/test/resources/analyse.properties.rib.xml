@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<!-- This is properties for performing tests using RIBS. 
+The following is not tested here:
+1) checking if update-sending AS is the first in AS Path (fix_peer_AS)
+2) fixing (1) in file and in input_names file (when simulate_fix_peer_as=false)
+3) analysis of updates from biggest connected component of visible/monitored ASs graph only - not used
+4) visible, not monitored ASs
+-->
+
+<properties>
+	<entry key="Analysis_type">correlated</entry>
+	<entry key="fix_peer_as">false</entry>
+	<entry key="simulate_fix_peer_as">true</entry>
+	<entry key="generate_ases">false</entry>
+	<entry key="generate_ases_folder">test/generated_ases</entry>
+	<entry key="AS_type_to_analyse">visible</entry>
+	<entry key="with_ribs">true</entry>
+	<entry key="map">test/test_map</entry>
+	<entry key="map_t1">test/test_map_t1</entry>
+	<entry key="map_t2">test/test_map_t2</entry>
+	<entry key="map_t3">test/test_map_t3</entry>
+	<entry key="dot_filename">test/graph</entry>
+	<entry key="input_names">test/input_names_ribs</entry>
+	<entry key="threads">2</entry>
+	<entry key="classification_results_filename">test/classification/classification_120_0.99</entry>
+	<entry key="time_quartiles_filename">test/classification/classification_120_0.99_time_quartiles_all_hops</entry>
+	<entry key="origins_quartiles_filename">test/classification/classification_120_0.99_origins_quartiles_all_hops</entry>
+</properties>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<!-- This is properties for performing tests. This properties could include 
+	parameters for different analysis type as all program units should be tested. -->
+
+<properties>
+	<entry key="Analysis_type">correlated</entry>
+	<entry key="fix_peer_as">false</entry>
+	<entry key="simulate_fix_peer_as">true</entry>
+	<entry key="generate_ases">false</entry>
+	<entry key="generate_ases_folder">test/generated_ases</entry>
+	<entry key="AS_type_to_analyse">visible</entry>
+	<entry key="map">test/test_map</entry>
+	<entry key="map_t1">test/test_map_t1</entry>
+	<entry key="map_t2">test/test_map_t2</entry>
+	<entry key="map_t3">test/test_map_t3</entry>
+	<entry key="dot_filename">test/graph</entry>
+	<entry key="input_names">test/input_names_basic</entry>
+	<entry key="gnuplot_colours">test/gnuplot_colours.txt</entry>
+	<entry key="threads">1</entry>
+	<entry key="start_interval">1</entry>
+	<entry key="end_interval">2</entry>
+	<entry key="basic_classification_results_filename">test/basic_classification/basic_classification_120_0.99_0.1</entry>
+	<entry key="classification_results_filename">test/classification/classification_120_0.99</entry>
+	<entry key="time_quartiles_filename">test/classification/classification_120_0.99_time_quartiles_all_hops</entry>
+	<entry key="origins_quartiles_filename">test/classification/classification_120_0.99_origins_quartiles_all_hops</entry>
+	<entry key="duplication_results_filename">test/duplication/duplicated_spikes_stats_all_collectors</entry>
+	<entry key="correlation_type">basic</entry>
+	<entry key="basic_threshold">0.1</entry>
+</properties>

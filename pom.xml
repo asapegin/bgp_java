@@ -1,0 +1,132 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.sapegin.bgp</groupId>
+	<artifactId>analyse</artifactId>
+	<version>3.0</version>
+	<name>BGP Analysis</name>
+	<description>This is the program for analysis of BGP updates for root cause analysis research.</description>
+
+	<dependencies>
+
+		<!-- Testing framework -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.10</version>
+		</dependency>
+
+		<!-- mocking framework for tests -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>1.8.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.8.5</version>
+		</dependency>
+
+		<!-- Logging framework -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+
+		<!-- JGraphT -->
+		<dependency>
+			<groupId>net.sf.jgrapht</groupId>
+			<artifactId>jgrapht</artifactId>
+			<version>0.8.3</version>
+		</dependency>
+
+		<!-- JGraphX -->
+		<dependency>
+			<groupId>org.tinyjee.jgraphx</groupId>
+			<artifactId>jgraphx</artifactId>
+			<version>1.10.1.4</version>
+		</dependency>
+
+		<!-- Trove. Need it to use TLongObjectHashMap to prevent type casting problems. 
+			See http://stackoverflow.com/questions/8628995/java-hashmap-boxed-key-type-autocast-weirdness. 
+			"Map.get() and remove() accept any object. Your int is being auto-boxed to 
+			Integer It doesn't know what you meant to write is map.get((Long) (long) 
+			intValue) or map.get((long) intValue) If you are using primitive types, rather 
+			than objects, you can try TLongObjectHashMap which does convert int to long 
+			(not the wrappers)" -->
+		<!-- <dependency> <groupId>net.sf.trove4j</groupId> <artifactId>trove4j</artifactId> 
+			<version>3.0.3</version> </dependency> -->
+
+		<!-- Apache commons. Just to have an ability to get RandomLong(min,max) -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-math</artifactId>
+			<version>2.2</version>
+		</dependency>
+		
+		<!-- Apache commons lang. To use HashCodeBuilder. -->
+		<dependency>
+    		<groupId>org.apache.commons</groupId>
+    		<artifactId>commons-lang3</artifactId>
+    		<version>3.1</version>
+		</dependency>
+
+		<!-- To be able to delete folders recursively -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<finalName>analyseBGP</finalName>
+		<directory>target</directory>
+		<outputDirectory>target/classes</outputDirectory>
+		<testOutputDirectory>target/test-classes</testOutputDirectory>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<testSourceDirectory>src/test/java</testSourceDirectory>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+			</testResource>
+		</testResources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>org.sapegin.bgp.analyse.AnalyseBGP</mainClass>
+						</manifest>
+					</archive>
+					<source>1.6</source>
+					<target>1.6</target>
+					<encoding>UTF-8</encoding>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

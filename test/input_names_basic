@@ -1,0 +1,8 @@
+#This file must have the same number of non-commented strings with the file ases_names
+#Each line in this file must correlate with corresponding line in the file ases_names!!! (Or program will count wrong results!)
+#Test:
+# this file is created for basic test, so I'm not using RIBs here
+# also I'm not using generated ases files. So files with updates contain some ases not listed in files with ases!
+test/updates/updates_m_1:test/ases/ases1
+test/updates/updates_m_2:test/ases/ases2
+test/updates/updates_m_3:test/ases/ases3

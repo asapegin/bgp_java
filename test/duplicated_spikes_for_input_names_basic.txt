@@ -1,0 +1,48 @@
+# please note, that according to input_names_basic, 
+# updates from as 16150 (updates_m_1), as 13101 (updates_m_2) and as 24875 (updates_m_2)
+# should not be loaded as they are not listed correspondingly in ases/ases1 and ases/ases2.   
+
+# also, due to time synchronisation, updates before 1243814455 and after 1243814462 will not be imported  
+
+# duplicatedPercentage = 99% !!!
+
+
+# group of duplicated spikes!
+monitoring_router| time | as | size
+
+updates_m_1 1243814456 29073 7 
+updates_m_1 1243814462 12956 5 
+updates_m_2 1243814455 22548 2 
+updates_m_2 1243814457 22548 2 
+updates_m_2 1243814459 22548 1 
+updates_m_2 1243814462 22548 3 # 1 of 3 prefixes of 22548 is not "duplicated"!
+							   # this spike is duplicated only with other spikes from this group with size < 3! 
+
+
+
+
+
+
+
+
+
+
+# all duplicated with all - not finished!!!
+
+monitoring_router| time | as | size --- monitoring_router | time | as | size
+
+updates_m_1 1243814454 3257  2 --- updates_m_1 1243814456 29073 7
+updates_m_1 1243814454 3257  2 --- updates_m_1 1243814462 12956 5
+updates_m_1 1243814454 3257  2 --- updates_m_2 1243814455 22548 2
+updates_m_1 1243814454 3257  2 --- updates_m_2 1243814457 22548 2
+updates_m_1 1243814454 3257  2 --- updates_m_2 1243814459 22548 1
+updates_m_1 1243814454 3257  2 --- updates_m_2 1243814462 22548 3 # 1 of 3 prefixes of 22548 is not "duplicated"!
+updates_m_1 1243814454 3257  2 --- updates_m_2 1243814465 22548 4
+
+updates_m_1 1243814456 29073 7 --- updates_m_1 1243814462 12956 5
+updates_m_1 1243814456 29073 7 --- updates_m_2 1243814455 22548 2
+updates_m_1 1243814456 29073 7 --- updates_m_2 1243814457 22548 2
+updates_m_1 1243814456 29073 7 --- updates_m_2 1243814459 22548 1
+updates_m_1 1243814456 29073 7 --- updates_m_2 1243814462 22548 3 # 1 of 3 prefixes of 22548 is not "duplicated"!
+updates_m_1 1243814456 29073 7 --- updates_m_2 1243814465 22548 4
+

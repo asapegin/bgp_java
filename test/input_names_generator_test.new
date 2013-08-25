@@ -1,0 +1,6 @@
+#This file must have the same number of non-commented strings with the file ases_names
+#Each line in this file must correlate with corresponding line in the file ases_names!!! (Or program will count wrong results!)
+#Test:
+#This file must have the same number of non-commented strings with the file ases_names:test/generated_ases/updates_m_1.ases
+test/updates/updates_m_2:test/generated_ases/updates_m_2.ases
+test/updates/updates_m_3:test/generated_ases/updates_m_3.ases
