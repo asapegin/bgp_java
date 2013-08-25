@@ -9,4 +9,4 @@ Andrey Sapegin and Steve Uhlig. "On the extent of correlation in BGP updates in 
 
 For the specific analysis modes please see properties.xml in the resources folder.
 
-P.S. This is a Maven-based project.
+This is a Maven-based project.
