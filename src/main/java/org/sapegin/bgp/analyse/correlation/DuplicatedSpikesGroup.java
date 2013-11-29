@@ -333,13 +333,13 @@ public class DuplicatedSpikesGroup extends SpikeCollection {
 					long as2MinTime = Long.MAX_VALUE;
 					for (MonitoredAS monitoredAS : allUpdates.keySet()) {
 						if ((monitoredAS.getMonitoredAS() == as1)
-								|| allUpdates.get(monitoredAS)
+								&& allUpdates.get(monitoredAS)
 										.getCurrentMinTime() < as1MinTime) {
 							as1MinTime = allUpdates.get(monitoredAS)
 									.getCurrentMinTime();
 						}
 						if ((monitoredAS.getMonitoredAS() == as2)
-								|| allUpdates.get(monitoredAS)
+								&& allUpdates.get(monitoredAS)
 										.getCurrentMinTime() < as2MinTime) {
 							as2MinTime = allUpdates.get(monitoredAS)
 									.getCurrentMinTime();
