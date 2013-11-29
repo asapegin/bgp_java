@@ -24,6 +24,6 @@ It supports dumps of BGP RIBs as well, that could be generated using bgpdump too
 All scripts for downloading and converting the dumps are located in the 'scripts' folder.
 Initially, for each file with update dumps, the file with ASs sending the updates from the dumps should be generated. To do it, set "generate_ases" key to true, and it will be generated automatically.
 
-As this program relates the updates with the Internet topology data, you also need maps with Internet topology from Internet Topology Project, or Cycle-ASlinks dataset from CAIDA. Please notice that it is highly recommended to have the topology maps for the same date, as dumps of BGP updates, as soon as Internet topology changes constantly.
+As this program relates the updates with the Internet topology data, you also need maps with Internet topology from Internet Topology Project, or IPv4 Routed /24 AS Links Dataset from CAIDA. Please notice that it is highly recommended to have the topology maps for the same date, as dumps of BGP updates, as soon as Internet topology changes constantly.
 
 For more details, please read javadoc, or feel free to contact me directly.
