@@ -10,7 +10,7 @@ Andrey Sapegin and Steve Uhlig. "On the extent of correlation in BGP updates in 
 
 The behaviour of the program and analysis modes are controlled in properties.xml in the resources folder (this is a Maven-based project).
 
-To switch between analysis modes, change <entry key="Analysis_type"> in the properties.xml.
+To switch between analysis modes, change "Analysis_type" key in the properties.xml.
 
 1. The 'duplication' mode should be used for BGP analysis described in the Section 3 of the paper.
 
@@ -22,7 +22,7 @@ To switch between analysis modes, change <entry key="Analysis_type"> in the prop
 As the input, the program accepts dumps of BGP updates in machine-readable ASCII format, that is produced by conversion of raw dumps using the 'route_btoa' tool from MRT 2.2.2a package. The location of dumps is specified in the 'input_names.txt' file.
 It supports dumps of BGP RIBs as well, that could be generated using bgpdump tool.
 All scripts for downloading and converting the dumps are located in the 'scripts' folder.
-Initially, for each file with update dumps, the file with ASs sending the updates from the dumps should be generated. To do it, set <entry key="generate_ases"> to true, and it will be generated automatically.
+Initially, for each file with update dumps, the file with ASs sending the updates from the dumps should be generated. To do it, set "generate_ases" key to true, and it will be generated automatically.
 
 As this program relates the updates with the Internet topology data, you also need maps with Internet topology from Internet Topology Project, or Cycle-ASlinks dataset from CAIDA. Please notice that it is highly recommended to have the topology maps for the same date, as dumps of BGP updates, as soon as Internet topology changes constantly.
 
