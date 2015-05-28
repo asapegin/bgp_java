@@ -18,7 +18,7 @@ To switch between analysis modes, change "Analysis_type" key in the properties.x
 
 3. The 'graph' mode could be used to plot the spikes and their propagation paths. After the program loads dumps of BGP updates, it selects a defined amount of random spikes. Then, for each spike, it finds a group of spikes correlated with it, and finally prints all spikes together (gnuplot code is automatically generated), as well as prints out the propagation path (graphviz file is automatically generated). This mode is documented in the following paper:
 
-Andrey Sapegin, Feng Cheng and Christoph Meinel. "Catch the spike: on the locality of individual BGP update bursts." In proceedings of the IEEE 9th International Conference on Mobile Ad-hoc and Sensor Networks (MSN 2013).
+  Andrey Sapegin, Feng Cheng and Christoph Meinel. "Catch the spike: on the locality of individual BGP update bursts." In proceedings of the IEEE 9th International Conference on Mobile Ad-hoc and Sensor Networks (MSN 2013).
 
 As the input, the program accepts dumps of BGP updates in machine-readable ASCII format, that is produced by conversion of raw dumps using the 'route_btoa' tool from MRT 2.2.2a package. The location of dumps is specified in the 'input_names.txt' file.
 It supports dumps of BGP RIBs as well, that could be generated using bgpdump tool.
